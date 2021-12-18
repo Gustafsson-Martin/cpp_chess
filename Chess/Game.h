@@ -21,9 +21,9 @@ enum class Piece : char {
 };
 
 enum class Color {
-	NONE,
-	WHITE,
-	BLACK
+	NONE = 0,
+	WHITE = -1,
+	BLACK = 1
 };
 
 struct Move {
@@ -34,13 +34,13 @@ struct Move {
 class Game {
 public:
 	Game();
-	void fen_interpreter(std::string fen);
-	std::string fen_generator();
-	std::vector<Move> possible_moves();
+	void fen_interpreter(const std::string&);
+	std::string fen_generator() const;
+	std::vector<Move> possible_moves(int) const;
+	void move(Move);
 private:
     static const int BOARD_SIZE{64};
 	std::array<Piece, BOARD_SIZE> board{};
 	Color turn = Color::WHITE;
 	std::vector<int> moves{}; // change from int to Move or something
 };
-

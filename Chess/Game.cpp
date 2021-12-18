@@ -1,6 +1,7 @@
 #include "Game.h"
+#include <iostream>
 
-Game::Game() { 
+Game::Game() {
 }
 
 Color piece_color(Piece piece) {
@@ -9,22 +10,22 @@ Color piece_color(Piece piece) {
 	return Color::WHITE;
 }
 
-void Game::fen_interpreter(std::string fen) {
+void Game::fen_interpreter(const std::string& fen) {
 	// TODO: Do more than just set the board (set which sides turn it is etc.)
 	int board_index = 0;
-	for (int i = 0; i < fen.length(); i++) {
-		if (fen[i] == ' ') break;
-		if (fen[i] == '/') continue;
-		if (isdigit(fen[i])) {
-			board_index += (int)fen[i] - (int)'0';
+	for (const char &chr : fen) {
+		if (chr == ' ') break;
+		if (chr == '/') continue;
+		if (isdigit(chr)) {
+			board_index += static_cast<int>(chr) - '0';
 		} else {
-			board[board_index] = static_cast<Piece>(fen[i]);
+			board[board_index] = static_cast<Piece>(chr);
 			board_index++;
 		}
 	}
 }
 
-std::string Game::fen_generator() {
+std::string Game::fen_generator() const {
 	std::string fen{};
 	int empty_counter{};
 	for (int i = 0; i < BOARD_SIZE; i++) {
@@ -44,13 +45,20 @@ std::string Game::fen_generator() {
 	return fen;
 }
 
-std::vector<Move> Game::possible_moves() {
+std::vector<Move> Game::possible_moves(int index) const {
+	Piece piece = board[index];
 	std::vector<Move> moves{};
-	for (int i = 0; i < BOARD_SIZE; i++) {
-		if (board[i] == Piece::WHITE_PAWN) {
-			moves.push_back(Move{ i, i-8 });
-		}
-		//if (piece_color(board[i]) == turn) {}
+	if (piece == Piece::WHITE_PAWN || piece == Piece::BLACK_PAWN) {
+		int dir = static_cast<int>(piece_color(piece));
+		moves.push_back(Move{index, index + (dir*8)});
+		if (index / 8 == 6 && piece == Piece::WHITE_PAWN) moves.push_back(Move{index, index + (dir*16)});
+		if (index / 8 == 1 && piece == Piece::BLACK_PAWN) moves.push_back(Move{index, index + (dir*16)});
+	} else if (piece == Piece::WHITE_KNIGHT || piece == Piece::BLACK_KNIGHT) {
 	}
 	return moves;
+}
+
+void Game::move(Move move) {
+	board[move.to] = board[move.from];
+	board[move.from] = Piece::EMPTY;
 }
