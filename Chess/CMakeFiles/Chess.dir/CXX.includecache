@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/martin/Documents/programmering/cpp_chess/Chess/Chess.cpp
+Chess.h
+/home/martin/Documents/programmering/cpp_chess/Chess/Chess.h
+Game.h
+/home/martin/Documents/programmering/cpp_chess/Chess/Game.h
+vector
+-
+
+/home/martin/Documents/programmering/cpp_chess/Chess/Chess.h
+iostream
+-
+array
+-
+
+/home/martin/Documents/programmering/cpp_chess/Chess/Game.cpp
+Game.h
+/home/martin/Documents/programmering/cpp_chess/Chess/Game.h
+
+/home/martin/Documents/programmering/cpp_chess/Chess/Game.h
+array
+-
+vector
+-
+string
+-
+
