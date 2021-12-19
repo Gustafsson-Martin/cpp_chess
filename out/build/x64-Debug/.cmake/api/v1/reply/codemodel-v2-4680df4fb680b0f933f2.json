@@ -65,8 +65,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "Q:/C++/Chess/out/build/x64-Debug",
-		"source" : "Q:/C++/Chess"
+		"build" : "C:/Programming/C++/cpp_chess/out/build/x64-Debug",
+		"source" : "C:/Programming/C++/cpp_chess"
 	},
 	"version" : 
 	{

@@ -1,8 +1,8 @@
-# Install script for directory: Q:/C++/Chess/Chess
+# Install script for directory: C:/Programming/C++/cpp_chess/Chess
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "Q:/C++/Chess/out/install/x64-Debug")
+  set(CMAKE_INSTALL_PREFIX "C:/Programming/C++/cpp_chess/out/install/x64-Debug")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 

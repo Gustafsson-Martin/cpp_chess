@@ -1,5 +1,5 @@
-Q:/C++/Chess/out/build/x64-Debug/CMakeFiles/edit_cache.dir
-Q:/C++/Chess/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
-Q:/C++/Chess/out/build/x64-Debug/Chess/CMakeFiles/Chess.dir
-Q:/C++/Chess/out/build/x64-Debug/Chess/CMakeFiles/edit_cache.dir
-Q:/C++/Chess/out/build/x64-Debug/Chess/CMakeFiles/rebuild_cache.dir
+C:/Programming/C++/cpp_chess/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+C:/Programming/C++/cpp_chess/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
+C:/Programming/C++/cpp_chess/out/build/x64-Debug/Chess/CMakeFiles/Chess.dir
+C:/Programming/C++/cpp_chess/out/build/x64-Debug/Chess/CMakeFiles/edit_cache.dir
+C:/Programming/C++/cpp_chess/out/build/x64-Debug/Chess/CMakeFiles/rebuild_cache.dir

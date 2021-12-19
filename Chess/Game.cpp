@@ -4,6 +4,15 @@
 Game::Game() {
 }
 
+int Game::row(int index) const {
+	return index / 8;
+}
+
+int Game::col(int index) const {
+	return index % 8;
+}
+
+
 Color piece_color(Piece piece) {
 	if (piece == Piece::EMPTY) return Color::NONE;
 	if ((char)piece > 'a') return Color::BLACK;
@@ -48,14 +57,34 @@ std::string Game::fen_generator() const {
 std::vector<Move> Game::possible_moves(int index) const {
 	Piece piece = board[index];
 	std::vector<Move> moves{};
+	moves.reserve(8);
 	if (piece == Piece::WHITE_PAWN || piece == Piece::BLACK_PAWN) {
 		int dir = static_cast<int>(piece_color(piece));
 		moves.push_back(Move{index, index + (dir*8)});
 		if (index / 8 == 6 && piece == Piece::WHITE_PAWN) moves.push_back(Move{index, index + (dir*16)});
 		if (index / 8 == 1 && piece == Piece::BLACK_PAWN) moves.push_back(Move{index, index + (dir*16)});
 	} else if (piece == Piece::WHITE_KNIGHT || piece == Piece::BLACK_KNIGHT) {
+		std::array<Vec, 8> knight_moves{ Vec{-2, -1}, Vec{-1, -2}, Vec{1, -2}, Vec{2, -1}, Vec{2, 1}, Vec{1, 2}, Vec{-1, 2}, Vec{-2, 1} };
+		for (Vec dir : knight_moves) {
+			if (row(index) + dir.y >= 0 && row(index) + dir.y < 8 && col(index) + dir.x >= 0 && col(index) + dir.x < 8) {
+				moves.push_back(Move{ index, index + (dir.x) + (8*dir.y)});
+			}
+		}
+	} else if (piece == Piece::WHITE_BISHOP || piece == Piece::BLACK_BISHOP) {
+
 	}
 	return moves;
+}
+
+void Game::print() const {
+	std::cout << "--------------------" << std::endl;
+	for (int i = 0; i < BOARD_SIZE; i++) {
+		std::cout << '|' << static_cast<char>(board[i]);
+		if (board[i] == Piece::EMPTY) std::cout << ' ';
+		if ((i + 1) % 8 == 0) {
+			std::cout << "|\n";
+		}
+	}
 }
 
 void Game::move(Move move) {

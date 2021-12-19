@@ -13,7 +13,7 @@
 					"linkFrameworkDirectories" : [],
 					"linkLibraries" : []
 				},
-				"path" : "Q:/Visual Studio/2022/VC/Tools/MSVC/14.30.30705/bin/Hostx64/x64/cl.exe",
+				"path" : "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.30.30705/bin/Hostx64/x64/cl.exe",
 				"version" : "19.30.30706.0"
 			},
 			"language" : "C",
@@ -34,7 +34,7 @@
 					"linkFrameworkDirectories" : [],
 					"linkLibraries" : []
 				},
-				"path" : "Q:/Visual Studio/2022/VC/Tools/MSVC/14.30.30705/bin/Hostx64/x64/cl.exe",
+				"path" : "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.30.30705/bin/Hostx64/x64/cl.exe",
 				"version" : "19.30.30706.0"
 			},
 			"language" : "CXX",

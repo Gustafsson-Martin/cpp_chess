@@ -31,6 +31,11 @@ struct Move {
 	int to;
 };
 
+struct Vec {
+	int x;
+	int y;
+};
+
 class Game {
 public:
 	Game();
@@ -38,9 +43,12 @@ public:
 	std::string fen_generator() const;
 	std::vector<Move> possible_moves(int) const;
 	void move(Move);
+	void print() const;
 private:
     static const int BOARD_SIZE{64};
 	std::array<Piece, BOARD_SIZE> board{};
 	Color turn = Color::WHITE;
 	std::vector<int> moves{}; // change from int to Move or something
+	int row(int) const;
+	int col(int) const;
 };
