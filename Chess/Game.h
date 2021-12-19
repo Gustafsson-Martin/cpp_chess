@@ -26,9 +26,14 @@ enum class Color {
 	BLACK = 1
 };
 
+struct Square {
+	int row;
+	int col;
+};
+
 struct Move {
-	int from;
-	int to;
+	Square from;
+	Square to;
 };
 
 struct Vec {
@@ -41,14 +46,15 @@ public:
 	Game();
 	void fen_interpreter(const std::string&);
 	std::string fen_generator() const;
-	std::vector<Move> possible_moves(int) const;
+	std::vector<Move> possible_moves(Square) const;
 	void move(Move);
 	void print() const;
 private:
-    static const int BOARD_SIZE{64};
-	std::array<Piece, BOARD_SIZE> board{};
+    static constexpr int BOARD_SIZE{ 8 };
+	std::array<std::array<Piece, BOARD_SIZE>, BOARD_SIZE> board{};
 	Color turn = Color::WHITE;
 	std::vector<int> moves{}; // change from int to Move or something
 	int row(int) const;
 	int col(int) const;
+	bool is_within_board(const Square&) const;
 };

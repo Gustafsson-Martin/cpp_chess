@@ -28,7 +28,7 @@ void Game::fen_interpreter(const std::string& fen) {
 		if (isdigit(chr)) {
 			board_index += static_cast<int>(chr) - '0';
 		} else {
-			board[board_index] = static_cast<Piece>(chr);
+			board[board_index / BOARD_SIZE][board_index % BOARD_SIZE] = static_cast<Piece>(chr);
 			board_index++;
 		}
 	}
@@ -37,57 +37,69 @@ void Game::fen_interpreter(const std::string& fen) {
 std::string Game::fen_generator() const {
 	std::string fen{};
 	int empty_counter{};
-	for (int i = 0; i < BOARD_SIZE; i++) {
-		if (board[i] == Piece::EMPTY) empty_counter++;
-		else {
-			if (empty_counter > 0) fen += std::to_string(empty_counter);
-			empty_counter = 0;
-			fen += static_cast<char>(board[i]);
+	for (const std::array<Piece, BOARD_SIZE>& row : board) {
+		for (Piece piece : row) {
+			if (piece == Piece::EMPTY) empty_counter++;
+			else {
+				if (empty_counter > 0) fen += std::to_string(empty_counter);
+				empty_counter = 0;
+				fen += static_cast<char>(piece);
+			}
 		}
-		if ((i+1) % 8 == 0) {
-			if (empty_counter > 0) fen += std::to_string(empty_counter);
-			empty_counter = 0;
-			if (i != 63) fen += "/";
-		}
+		if (empty_counter > 0) fen += std::to_string(empty_counter);
+		empty_counter = 0;
+		fen += "/";
 	}
+	fen.pop_back(); // Remove trailing "/"
 	fen += " w - - 0 1";
 	return fen;
 }
 
-std::vector<Move> Game::possible_moves(int index) const {
-	Piece piece = board[index];
+bool Game::is_within_board(const Square& square) const {
+	return (square.row >= 0 && square.row < BOARD_SIZE&& square.col >= 0 && square.col < BOARD_SIZE);
+}
+
+Square add(const Square& square, const Vec& vec) {
+	return Square{square.row + vec.y, square.col + vec.x};
+}
+
+std::vector<Move> Game::possible_moves(Square square) const {
+	Piece piece = board[square.row][square.col];
 	std::vector<Move> moves{};
 	moves.reserve(8);
 	if (piece == Piece::WHITE_PAWN || piece == Piece::BLACK_PAWN) {
 		int dir = static_cast<int>(piece_color(piece));
-		moves.push_back(Move{index, index + (dir*8)});
-		if (index / 8 == 6 && piece == Piece::WHITE_PAWN) moves.push_back(Move{index, index + (dir*16)});
-		if (index / 8 == 1 && piece == Piece::BLACK_PAWN) moves.push_back(Move{index, index + (dir*16)});
+		moves.push_back(Move{ square, Square{square.row, square.col + (1*dir)} });
+		if ((square.row == 6 && piece == Piece::WHITE_PAWN) || (square.row == 1 && piece == Piece::BLACK_PAWN)) {
+			moves.push_back(Move{ square, Square{square.row, square.col + (2*dir)} });
+		}
 	} else if (piece == Piece::WHITE_KNIGHT || piece == Piece::BLACK_KNIGHT) {
 		std::array<Vec, 8> knight_moves{ Vec{-2, -1}, Vec{-1, -2}, Vec{1, -2}, Vec{2, -1}, Vec{2, 1}, Vec{1, 2}, Vec{-1, 2}, Vec{-2, 1} };
 		for (Vec dir : knight_moves) {
-			if (row(index) + dir.y >= 0 && row(index) + dir.y < 8 && col(index) + dir.x >= 0 && col(index) + dir.x < 8) {
-				moves.push_back(Move{ index, index + (dir.x) + (8*dir.y)});
+			Square target = add(square, dir);
+			if (is_within_board(target)) {
+				moves.push_back(Move{square, target});
 			}
 		}
 	} else if (piece == Piece::WHITE_BISHOP || piece == Piece::BLACK_BISHOP) {
 
-	}
-	return moves;
+	}*/
+	return std::vector<Move>{};
+	//return moves;
 }
 
 void Game::print() const {
 	std::cout << "--------------------" << std::endl;
-	for (int i = 0; i < BOARD_SIZE; i++) {
-		std::cout << '|' << static_cast<char>(board[i]);
-		if (board[i] == Piece::EMPTY) std::cout << ' ';
-		if ((i + 1) % 8 == 0) {
-			std::cout << "|\n";
+	for (const std::array<Piece, BOARD_SIZE>& row : board) {
+		for (Piece piece : row) {
+			std::cout << '|' << static_cast<char>(piece);
+			if (piece == Piece::EMPTY) std::cout << ' ';
 		}
+		std::cout << "|\n";
 	}
 }
 
 void Game::move(Move move) {
-	board[move.to] = board[move.from];
-	board[move.from] = Piece::EMPTY;
+	board[move.to.row][move.to.col] = board[move.from.row][move.from.col];
+	board[move.from.row][move.from.col] = Piece::EMPTY;
 }
