@@ -49,6 +49,7 @@ public:
 	std::vector<Move> possible_moves(Square) const;
 	void move(Move);
 	void print() const;
+	void print_possible_moves(std::vector<Move>) const;
 private:
     static constexpr int BOARD_SIZE{ 8 };
 	std::array<std::array<Piece, BOARD_SIZE>, BOARD_SIZE> board{};

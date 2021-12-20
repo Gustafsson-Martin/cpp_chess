@@ -8,11 +8,12 @@
 int main() {
 	Game game{};
 	game.fen_interpreter("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
-	std::vector<Move> moves = game.possible_moves(62);
-	/*for (int i = 0; i < moves.size(); i++) {
-		std::cout << moves[i].from << " -> " << moves[i].to << std::endl;
+	std::vector<Move> moves = game.possible_moves(Square{6,5});
+	for (int i = 0; i < moves.size(); i++) {
+		std::cout << moves[i].from.row << moves[i].from.col << " -> " << moves[i].to.row << moves[i].to.col << std::endl;
 	}
-	game.move(moves[1]);*/
+	game.print_possible_moves(moves);
+	//game.move(moves[10]);
 	std::cout << game.fen_generator() << std::endl;
 	game.print();
 	return 0;
