@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\imgui">
+      <UniqueIdentifier>{5bff59a0-c72b-4e2a-bf94-e9e9e7f3148e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\chess">
+      <UniqueIdentifier>{a237a514-7add-4083-8354-e09fe598423b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\imgui">
+      <UniqueIdentifier>{74e70e58-fbbe-4c91-af4a-daa1cda31bd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\chess">
+      <UniqueIdentifier>{1325fe42-c04e-4454-8a63-c1686fee1426}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\rendering">
+      <UniqueIdentifier>{0ab40f65-09d2-4c37-9bdd-30ab76621d1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\rendering">
+      <UniqueIdentifier>{f0696ef1-d659-4663-bd58-5a46722ab5d1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="imgui\source\imgui.cpp">
+      <Filter>Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\source\imgui_demo.cpp">
+      <Filter>Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\source\imgui_draw.cpp">
+      <Filter>Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\source\imgui_impl_glfw.cpp">
+      <Filter>Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\source\imgui_impl_opengl3.cpp">
+      <Filter>Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\source\imgui_tables.cpp">
+      <Filter>Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\source\imgui_widgets.cpp">
+      <Filter>Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="chess\source\game.cpp">
+      <Filter>Source Files\chess</Filter>
+    </ClCompile>
+    <ClCompile Include="chess\source\board.cpp">
+      <Filter>Source Files\chess</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\textureloading.cpp">
+      <Filter>Source Files\rendering</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="imgui\header\imconfig.h">
+      <Filter>Header Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\header\imgui.h">
+      <Filter>Header Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\header\imgui_impl_glfw.h">
+      <Filter>Header Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\header\imgui_impl_opengl3.h">
+      <Filter>Header Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\header\imgui_impl_opengl3_loader.h">
+      <Filter>Header Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\header\imgui_internal.h">
+      <Filter>Header Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\header\imstb_rectpack.h">
+      <Filter>Header Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\header\imstb_textedit.h">
+      <Filter>Header Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\header\imstb_truetype.h">
+      <Filter>Header Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="chess\header\game.h">
+      <Filter>Header Files\chess</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\stb_image.h">
+      <Filter>Header Files\rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\textureloading.h">
+      <Filter>Header Files\rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="chess\header\board.h">
+      <Filter>Header Files\chess</Filter>
+    </ClInclude>
+    <ClInclude Include="chess\header\renderer.h">
+      <Filter>Header Files\chess</Filter>
+    </ClInclude>
+    <ClInclude Include="chess\header\types.h">
+      <Filter>Header Files\chess</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
